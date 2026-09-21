@@ -1,0 +1,21 @@
+from typing import Optional
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional['TreeNode'] = None, right: Optional['TreeNode'] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def inorderSuccessor(self, root: Optional[TreeNode], p: TreeNode) -> Optional[TreeNode]:
+        successor = None
+        curr = root
+
+        while curr:
+            if p.val < curr.val:
+                successor = curr
+                curr = curr.left
+            else:
+                curr = curr.right
+
+        return successor
